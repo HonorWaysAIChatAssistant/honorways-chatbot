@@ -151,7 +151,7 @@ async function send() {
   messages.scrollTop = messages.scrollHeight;
 
   try {
-    const res = await fetch("YOUR_WEBHOOK_URL_HERE", {
+    const res = await fetch("https://hook.us2.make.com/2gor8kpwlm6gtpmelge4x8xetfzel0iq", {
       method: "POST",
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({message: text})
