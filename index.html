@@ -163,7 +163,26 @@
 
       return msg;
     }
+let customerName = localStorage.getItem("customerName") || "";
+let nameAttempted = localStorage.getItem("nameAttempted") || "false";
+function isLikelyName(input) {
+    const trimmed = input.trim();
 
+    // Reject question-like entries
+    if (trimmed.includes("?")) return false;
+
+    // Split into words
+    const words = trimmed.split(/\s+/);
+
+    // Must be 1–2 words only
+    if (words.length < 1 || words.length > 2) return false;
+
+    // Prevent very long entries
+    if (trimmed.length > 25) return false;
+
+    // Letters only (supports apostrophes, hyphens)
+    return /^[A-Za-z\s'-]+$/.test(trimmed);
+}    
     function handleKeyPress(event) {
       if (event.key === "Enter") {
         sendMessage();
@@ -174,7 +193,32 @@
       const message = userInput.value.trim();
 
       if (!message) return;
+// NAME CAPTURE LOGIC START
+if (!customerName) {
 
+    if (isLikelyName(message)) {
+        customerName = message.trim();
+        localStorage.setItem("customerName", customerName);
+
+        addMessage(`Nice to meet you, ${customerName} 😊 How can I assist you today?`, "bot");
+        userInput.value = "";
+        return;
+    }
+
+    if (nameAttempted !== "true") {
+        localStorage.setItem("nameAttempted", "true");
+        nameAttempted = "true";
+        addMessage("A first name helps me assist you better 😊 May I have your first name? If you'd rather not share, that's okay too.", "bot");
+        userInput.value = "";
+        return;
+    }
+
+    customerName = "Unknown";
+    localStorage.setItem("customerName", customerName);
+
+    addMessage("No problem 😊 I can still help you. Let me assist you.", "bot");
+}
+// NAME CAPTURE LOGIC END
       console.log("SEND FUNCTION TRIGGERED");
       addMessage(message, "user");
       userInput.value = "";
@@ -223,7 +267,7 @@
 
     // Optional welcome message
     window.onload = () => {
-      addMessage("Hallo, ik ben de AI assistent voor JobethSalon en LoveFaithHope Apartements,😊 Hoe kan ik je vandaag helpen?", "bot");
+      addMessage("Hallo 😊 Ik ben de AI assistent van JoBeth Salon en LoveFaithHope Apartments. Mag ik eerst uw voornaam zodat ik u beter kan helpen?", "bot");
     };
   </script>
 
