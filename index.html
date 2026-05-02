@@ -191,18 +191,18 @@ function isLikelyName(input) {
 
     async function sendMessage() {
       const message = userInput.value.trim();
-const SESSION_TIMEOUT = 60 * 60 * 1000; // 1 hour
-const now = Date.now();
+      const SESSION_TIMEOUT = 60 * 60 * 1000; // 1 hour
+      const now = Date.now();
 
-const lastActivity = localStorage.getItem("lastActivity");
+      const lastActivity = localStorage.getItem("lastActivity");
 
-if (!lastActivity || now - parseInt(lastActivity) > SESSION_TIMEOUT) {
-    localStorage.removeItem("customerName");
-    localStorage.removeItem("nameAttempted");
-    customerName = "";
-}
+      if (!lastActivity || now - parseInt(lastActivity) > SESSION_TIMEOUT) {
+      localStorage.removeItem("customerName");
+      localStorage.removeItem("nameAttempted");
+      customerName = "";
+      }
 
-localStorage.setItem("lastActivity", now);
+      localStorage.setItem("lastActivity", now);
       if (!message) return;
 // NAME CAPTURE LOGIC START
 if (!customerName) {
