@@ -197,10 +197,13 @@ function isLikelyName(input) {
 if (!customerName) {
 
     if (isLikelyName(message)) {
+        addMessage(message, "user");
         customerName = message.trim();
         localStorage.setItem("customerName", customerName);
+        localStorage.removeItem("nameAttempted");
+        nameAttempted = "false";
 
-        addMessage(`Nice to meet you, ${customerName} 😊 How can I assist you today?`, "bot");
+        addMessage(`Hallo ${customerName}! 😊 Hoe kan ik u van dienst zijn?`, "bot");
         userInput.value = "";
         return;
     }
@@ -216,7 +219,7 @@ if (!customerName) {
     customerName = "Unknown";
     localStorage.setItem("customerName", customerName);
 
-    addMessage("No problem 😊 I can still help you. Let me assist you.", "bot");
+    addMessage("Geen probleem 😊 Ik help u graag verder. Waarmee kan ik u helpen?", "bot");
 }
 // NAME CAPTURE LOGIC END
       console.log("SEND FUNCTION TRIGGERED");
@@ -233,7 +236,10 @@ if (!customerName) {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ message })
+          body: JSON.stringify({
+               name: customerName,
+               message: message
+          })
         });
 
         const rawText = await response.text();
