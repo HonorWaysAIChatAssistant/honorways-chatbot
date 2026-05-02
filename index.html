@@ -196,7 +196,7 @@ const now = Date.now();
 
 const lastActivity = localStorage.getItem("lastActivity");
 
-if (!lastActivity || now - parseInt(lastActivity) > SESSION_TIMEOUT)
+if (!lastActivity || now - parseInt(lastActivity) > SESSION_TIMEOUT) {
     localStorage.removeItem("customerName");
     localStorage.removeItem("nameAttempted");
     customerName = "";
