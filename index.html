@@ -461,12 +461,15 @@ if ((customerName === "Gast / Guest" || customerName === "Unknown") && possibleN
     localStorage.removeItem("nameAttempted");
     nameAttempted = "false";
 
-    addMessage(`Leuk uw naam te leren kennen, ${customerName}! 😊
-    Waarmee kan ik u helpen?
-    1. JoBeth Salon afspraken en diensten
-    2. Overige producten of algemene vragen
-    3. Love Faith Hope vakantie appartementen
-    Typ gerust je vraag hieronder.`, "bot");
+addMessage(`Leuk uw naam te leren kennen, ${customerName}! 😊
+
+Waarmee kan ik u helpen?
+
+1. JoBeth Salon afspraken en diensten
+2. Overige producten of algemene vragen
+3. Love Faith Hope vakantie appartementen
+
+Typ gerust je vraag hieronder.`, "bot");
     userInput.value = "";
     return;
 }
@@ -481,12 +484,15 @@ if (!customerName) {
         localStorage.removeItem("nameAttempted");
         nameAttempted = "false";
 
-        addMessage(`Leuk uw naam te leren kennen, ${customerName}! 😊
-        Waarmee kan ik u helpen?
-        1. JoBeth Salon afspraken en diensten
-        2. Overige producten of algemene vragen
-        3. Love Faith Hope vakantie appartementen
-        Typ gerust uw vraag hieronder.`, "bot");
+  addMessage(`Leuk uw naam te leren kennen, ${customerName}! 😊
+  
+  Waarmee kan ik u helpen?
+  
+  1. JoBeth Salon afspraken en diensten
+  2. Overige producten of algemene vragen
+  3. Love Faith Hope vakantie appartementen
+        
+  Typ gerust uw vraag hieronder.`, "bot");
         userInput.value = "";
         return;
 
@@ -507,12 +513,15 @@ if (!customerName) {
         localStorage.removeItem("nameAttempted");
         nameAttempted = "false";
 
-        addMessage(`Geen probleem 😊 Ik help u graag verder. 
-        Waarmee kan ik u helpen?
-        1. JoBeth Salon afspraken en diensten
-        2. Overige producten of algemene vragen
-        3. Love Faith Hope vakantie appartementen
-        Typ gerust uw vraag hieronder.`, "bot");     
+    addMessage(`Geen probleem 😊 Ik help u graag verder. 
+        
+    Waarmee kan ik u helpen?
+        
+    1. JoBeth Salon afspraken en diensten
+    2. Overige producten of algemene vragen
+    3. Love Faith Hope vakantie appartementen
+    
+    Typ gerust uw vraag hieronder.`, "bot");     
         userInput.value = "";
         return;
     }
