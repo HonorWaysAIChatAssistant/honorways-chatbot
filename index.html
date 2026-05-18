@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Honorways AI Assistant v1.44</title>
+  <title>Honorways AI Assistant v1.45</title>
   <style>
     body {
       margin: 0;
@@ -197,7 +197,7 @@
 <body>
 
   <div class="chat-container">
-    <div class="chat-header">Jobeth Salon AI Assistant (Demo v1.44)</div>
+    <div class="chat-header">Jobeth Salon AI Assistant (Demo v1.45)</div>
     <div class="chat-box" id="chatBox"></div>
 
     <div class="input-area">
@@ -209,13 +209,13 @@
       />
       <button onclick="sendMessage()">Send</button>
     </div>
-    <div class="footer-branding">Powered by HonorWays | v1.44</div>
+    <div class="footer-branding">Powered by HonorWays | v1.45</div>
   </div>
 
   <script>
     // 🔧 REPLACE WITH YOUR MAKE WEBHOOK URL
     const WEBHOOK_URL = "https://hook.us2.make.com/2gor8kpwlm6gtpmelge4x8xetfzel0iq";
-    const CHATBOT_VERSION = "v1.44";
+    const CHATBOT_VERSION = "v1.45";
     const chatBox = document.getElementById("chatBox");
     const userInput = document.getElementById("userInput");
 
@@ -461,7 +461,12 @@ if ((customerName === "Gast / Guest" || customerName === "Unknown") && possibleN
     localStorage.removeItem("nameAttempted");
     nameAttempted = "false";
 
-    addMessage(`Leuk je naam te leren kennen, ${customerName}! 😊 Hoe kan ik je verder helpen?`, "bot");
+    addMessage(`Leuk uw naam te leren kennen, ${customerName}! 😊
+    Waarmee kan ik u helpen?
+    1. JoBeth Salon afspraken en diensten
+    2. Overige producten of algemene vragen
+    3. Love Faith Hope vakantie appartementen
+    Typ gerust je vraag hieronder.`, "bot");
     userInput.value = "";
     return;
 }
@@ -476,7 +481,12 @@ if (!customerName) {
         localStorage.removeItem("nameAttempted");
         nameAttempted = "false";
 
-        addMessage(`Leuk uw naam te leren kennen, ${customerName}! 😊 Hoe kan ik u verder helpen?`, "bot");
+        addMessage(`Leuk uw naam te leren kennen, ${customerName}! 😊
+        Waarmee kan ik u helpen?
+        1. JoBeth Salon afspraken en diensten
+        2. Overige producten of algemene vragen
+        3. Love Faith Hope vakantie appartementen
+        Typ gerust uw vraag hieronder.`, "bot");
         userInput.value = "";
         return;
 
@@ -497,7 +507,12 @@ if (!customerName) {
         localStorage.removeItem("nameAttempted");
         nameAttempted = "false";
 
-        addMessage("Geen probleem 😊 Ik help u graag verder. Waarmee kan ik u helpen?", "bot");
+        addMessage("Geen probleem 😊 Ik help u graag verder. 
+        Waarmee kan ik u helpen?
+        1. JoBeth Salon afspraken en diensten
+        2. Overige producten of algemene vragen
+        3. Love Faith Hope vakantie appartementen
+        Typ gerust uw vraag hieronder.`, "bot");     
         userInput.value = "";
         return;
     }
